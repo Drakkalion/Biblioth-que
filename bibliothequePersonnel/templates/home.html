@@ -1,0 +1,71 @@
+{% extends 'template_base.html' %}
+{% load static %}
+
+{% block titre %}Page d'accueil{% endblock %}
+{% block contenu %}
+<div class="jumbotron jumbotron-fluid">
+   <div class="container text-center">
+      <h1 class="display-4">Voyages</h1>
+      <p class="lead text-muted">
+         Voyager c'est ma vie!
+         Je vais vous faire découvrir mes destinations favorites à travers ce blog.
+      </p>
+      <a href="{% url 'elements:elements' %}" type="button" class="btn btn-primary">
+         Articles
+      </a>
+   </div>
+</div>
+
+<div class="container mt-4">
+   <div class="row">
+      <div class="col-lg mb-4">
+         <!-- get_media_prefix va récupérer l'url du dossier media -->
+         <img class="w-100" src="{% get_media_prefix %}img/NBA.jpg" alt="Image de blog">
+      </div>
+      <div class="col-lg text-justify">
+         <h2>Mes aventures</h2>
+         <hr class="my-4">
+         <p class="lead">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, nam fugit quos fugiat, rem quibusdam porro
+            facere perferendis consectetur quis deserunt quae corrupti quia blanditiis sint voluptates earum
+            consequatur! Quasi.
+         </p>
+      </div>
+   </div>
+
+   <hr xlass="my-4">
+   <div class="row">
+      <div class="col-lg-4 text-center">
+         <span class="fa-stack fa-5x">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fas fa-hiking fa-stack-1x"></i>
+         </span>
+         <h2 class="display-6">Randonnée</h2>
+         <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae iure sint corporis tempora quidem facere esse voluptatibus! Est vitae alias, beatae soluta nisi animi recusandae iusto, explicabo, ab molestiae rerum.
+         </p>
+      </div>
+      <div class="col-lg-4 text-center">
+         <span class="fa-stack fa-5x">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fas fa-utensils fa-stack-1x"></i>
+         </span>
+         <h2 class="display-6">Dégustation</h2>
+         <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+            Vitae iure sint corporis tempora quidem facere esse voluptatibus! Est vitae alias, beatae soluta nisi animi recusandae iusto, explicabo, ab molestiae rerum.
+         </p>
+      </div>
+      <div class="col-lg-4 text-center">
+         <span class="fa-stack fa-5x">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fas fa-route fa-stack-1x"></i>
+         </span>
+         <h2 class="display-6">Découverte</h2>
+         <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae iure sint corporis tempora quidem facere esse voluptatibus! Est vitae alias, beatae soluta nisi animi recusandae iusto, explicabo, ab molestiae rerum.
+         </p>
+      </div>
+   </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'template_base.html' %}
+{% block titre %}Eléments{% endblock %}
+
+{% block contenu %}
+
+<form action="{% url 'elements:search' %}" method="POST">
+    {% csrf_token %}
+    <input type="search" placeholder="search" aria-label="Search" name="searched">
+    <button class="btn btn-outline-second" type="submit">Search</button>
+</form>
+{% for element in elements %}
+<h2>{{ element.titre }} </h2>
+<h2>{{ element.id }} </h2>
+{% if element.image %}
+<img src="{{ element.image.url }}" alt="{{ element.titre }}">
+{% else %}
+<img src="{{ element.url }}" alt="{{ element.titre }}">
+{% endif %}
+
+{% if element.favori %}
+   <button class="btn btn-outline-second" >
+        <a onclick="maFonction(this.id)" href="{% url 'elements:update2' idelement=element.id %}" id="bouton_{{ element.id}}" action="GET">FAVORI</a>
+        
+   </button>
+{% endif %}
+
+{% endfor %}
+
+<script>
+    function maFonction(id) {
+      $.ajax({
+        type:'POST',
+        url:'/update2/{{ element.id}}',
+        data:{
+          favori:$(id).val(),
+        },
+        succes:function(){
+
+        }
+
+      })
+      // var div = document.getElementById(id);
+      // if (div.style.display === "none") {
+      //   div.style.display = "block";
+      // } else {
+      //   div.style.display = "none";
+      // }
+    }
+    </script> 
+{% endblock %}

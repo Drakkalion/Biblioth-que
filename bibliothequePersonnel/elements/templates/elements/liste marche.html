@@ -1,0 +1,48 @@
+{% extends 'template_base.html' %}
+{% block titre %}Eléments{% endblock %}
+
+{% block contenu %}
+
+<form action="{% url 'elements:search' %}" method="POST">
+  {% csrf_token %}
+  <input type="search" placeholder="search" aria-label="Search" name="searched">
+  <button class="btn btn-outline-second" type="submit">Search</button>
+</form>
+{% for element in elements %}
+<h2>{{ element.titre }} </h2>
+<h2>{{ element.id }} </h2>
+{% if element.image %}
+<img src="{{ element.image.url }}" alt="{{ element.titre }}">
+{% else %}
+<img src="{{ element.url }}" alt="{{ element.titre }}">
+{% endif %}
+
+{% if element.favori %}
+<button class="btn btn-outline-second" onclick="fullName(this.id)" id="bouton_{{ element.id}}">
+  
+    FAVORI
+</button>
+{% endif %}
+
+{% endfor %}
+
+<script>
+  function fullName(id) {
+    $.ajax({
+      data: document.getElementById(id).val,
+      url: "{% url 'elements:update2' %}",
+      type: "GET",
+      success: successFunc,
+      error: errorFunc
+    });
+
+    function successFunc(response) {
+      alert('ok');
+    }
+    function errorFunc() {
+      alert('error');
+    }
+
+  }
+</script>
+{% endblock %}
